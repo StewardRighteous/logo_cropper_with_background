@@ -8,7 +8,7 @@ import {
 function App() {
   return (
     <>
-      <Header></Header>
+      <h1>Circle Profile Generator</h1>
       <ImageUploadCard></ImageUploadCard>
       <ColorChooser></ColorChooser>
       <LogoGenerator></LogoGenerator>
