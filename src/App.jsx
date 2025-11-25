@@ -1,4 +1,9 @@
-import { Header, ImageUploadCard, ColorChooser } from "./ui/barrel";
+import {
+  Header,
+  ImageUploadCard,
+  ColorChooser,
+  LogoGenerator,
+} from "./ui/barrel";
 
 function App() {
   return (
@@ -6,6 +11,7 @@ function App() {
       <Header></Header>
       <ImageUploadCard></ImageUploadCard>
       <ColorChooser></ColorChooser>
+      <LogoGenerator></LogoGenerator>
     </>
   );
 }
