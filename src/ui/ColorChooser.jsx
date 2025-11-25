@@ -29,36 +29,40 @@ export default function ColorChooser({ imageCropped }) {
 
   return (
     <>
-      <h1>Step 2: Customize your Border</h1>
-
-      <label htmlFor="border-color">Border Color</label>
-      <input
-        type="color"
-        name="border-color"
-        id="border-color"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
-      />
-
-      <label htmlFor="border-thickness">Border Thickness</label>
-      <input
-        type="number"
-        id="border-thickness-value"
-        value={borderSize}
-        onChange={(e) => setBorderSize(Number(e.target.value))}
-      />
-
-      <input
-        type="range"
-        name="border-thickness"
-        id="border-thickness"
-        min={0}
-        max={64}
-        value={borderSize}
-        onChange={(e) => setBorderSize(Number(e.target.value))}
-      />
-
-      <button onClick={handlePick}>Pick Color</button>
+      <div className="color-choose">
+        <h1>Step 2: Customize your Border</h1>
+        <div className="border-options">
+          <div className="option">
+            <label htmlFor="border-color">Border Color</label>
+            <input
+              type="color"
+              name="border-color"
+              id="border-color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </div>
+          <div className="option">
+            <label htmlFor="border-thickness">Border Thickness</label>
+            <input
+              type="number"
+              id="border-thickness-value"
+              value={borderSize}
+              onChange={(e) => setBorderSize(Number(e.target.value))}
+            />
+            <input
+              type="range"
+              name="border-thickness"
+              id="border-thickness"
+              min={0}
+              max={64}
+              value={borderSize}
+              onChange={(e) => setBorderSize(Number(e.target.value))}
+            />
+          </div>
+          <button onClick={handlePick}>Pick Color</button>
+        </div>
+      </div>
 
       <LogoGenerator image={imageCropped} border={borderSize} color={color} />
     </>

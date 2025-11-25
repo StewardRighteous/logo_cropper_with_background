@@ -11,7 +11,7 @@ export default function LogoGenerator({ image, border, color }) {
 
   return (
     <>
-      <div ref={imagePrintable}>
+      <div ref={imagePrintable} className="logo">
         <img
           className="circle"
           src={image}
@@ -32,7 +32,9 @@ export default function LogoGenerator({ image, border, color }) {
         ></div>
       </div>
 
-      <button onClick={handlePrint}>Print</button>
+      <button onClick={handlePrint} id="printbutton">
+        Print
+      </button>
     </>
   );
 }

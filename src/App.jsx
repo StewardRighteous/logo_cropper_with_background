@@ -6,9 +6,13 @@ function App() {
 
   return (
     <>
-      <h1>Circle Profile Generator</h1>
-      <ImageUploadCard setImageCropped={setImageCropped}></ImageUploadCard>
-      <ColorChooser imageCropped={imageCropped}></ColorChooser>
+      <div className="app">
+        <header>
+          <h1>Circle Profile Generator</h1>
+        </header>
+        <ImageUploadCard setImageCropped={setImageCropped}></ImageUploadCard>
+        <ColorChooser imageCropped={imageCropped}></ColorChooser>
+      </div>
     </>
   );
 }

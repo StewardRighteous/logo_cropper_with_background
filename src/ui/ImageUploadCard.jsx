@@ -26,44 +26,49 @@ export default function ImageUploadCard({ setImageCropped }) {
   if (image != null) {
     return (
       <>
-        <button onClick={() => setImage(null)}>Remove Image</button>
-
-        <div
-          className="crop-container"
-          style={{ height: "500px", width: "500px", position: "relative" }}
-        >
-          <Cropper
-            image={image}
-            crop={crop}
-            zoom={zoom}
-            aspect={1}
-            onCropChange={setCrop}
-            onCropComplete={onCropComplete}
-            onZoomChange={setZoom}
-            cropShape="round"
-          />
+        <div className="image-upload">
+          <button onClick={() => setImage(null)}>Remove Image</button>
+          <div
+            className="crop-container"
+            style={{ height: "500px", width: "500px", position: "relative" }}
+          >
+            <Cropper
+              image={image}
+              crop={crop}
+              zoom={zoom}
+              aspect={1}
+              onCropChange={setCrop}
+              onCropComplete={onCropComplete}
+              onZoomChange={setZoom}
+              cropShape="round"
+            />
+          </div>
+          <button onClick={handleCrop} style={{ marginTop: "20px" }}>
+            Crop & Save
+          </button>
         </div>
-        <button onClick={handleCrop} style={{ marginTop: "20px" }}>
-          Crop & Save
-        </button>
       </>
     );
   }
 
   return (
     <>
-      <h1>Step 1: Upload your Image</h1>
-      <label htmlFor="image-upload">
-        <p>Drag & Drop Image Here</p>
-        <p>Or click the button below to browse your files</p>
-      </label>
-      <input
-        type="file"
-        name="image-upload"
-        id="image-upload"
-        accept="image/*"
-        onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
-      />
+      <div className="image-upload">
+        <h1>Step 1: Upload your Image</h1>
+        <div className="upload-drop">
+          <label htmlFor="image-upload">
+            <h3>Drag & Drop Image Here</h3>
+            <p>Or click the button below to browse your files</p>
+          </label>
+          <input
+            type="file"
+            name="image-upload"
+            id="image-upload"
+            accept="image/*"
+            onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
+          />
+        </div>
+      </div>
     </>
   );
 }
