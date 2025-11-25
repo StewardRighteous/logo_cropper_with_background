@@ -1,8 +1,22 @@
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
+
 export default function LogoGenerator() {
+  const imagePrintable = useRef();
+
+  const handlePrint = useReactToPrint({
+    contentRef: imagePrintable,
+    documentTitle: "Logo",
+  });
+
   return (
     <>
-      <img className="circle" src="/test.jpg" alt="" />
-      <div className="circle"></div>
+      <div ref={imagePrintable} className="flex flex-col justify-items-center">
+        <img className="circle" src="/test.jpg" alt="" />
+        <div className="circle"></div>
+      </div>
+
+      <button onClick={handlePrint}>Print</button>
     </>
   );
 }
