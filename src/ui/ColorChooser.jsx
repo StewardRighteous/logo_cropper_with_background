@@ -1,6 +1,7 @@
 import { useState } from "react";
+import LogoGenerator from "./LogoGenerator";
 
-export default function ColorChooser() {
+export default function ColorChooser({ imageCropped }) {
   const [color, setColor] = useState("#ffffff");
   const [borderSize, setBorderSize] = useState(8);
 
@@ -23,14 +24,14 @@ export default function ColorChooser() {
         name="border-color"
         id="border-color"
         value={color}
-        onChange={(e) => setColor(e.target.color)}
+        onChange={(e) => setColor(e.target.value)}
       />
       <label htmlFor="border-thickness">Border Thickness </label>
       <input
         type="number"
         id="border-thickness-value"
         value={borderSize}
-        onChange={(e) => setBorderSize(e.target.value)}
+        onChange={(e) => setBorderSize(Number(e.target.value))}
       />
       <input
         type="range"
@@ -39,9 +40,14 @@ export default function ColorChooser() {
         min={0}
         max={64}
         value={borderSize}
-        onChange={(e) => setBorderSize(e.target.value)}
+        onChange={(e) => setBorderSize(Number(e.target.value))}
       />
       <button onClick={handlePick}>Pick Color</button>
+      <LogoGenerator
+        image={imageCropped}
+        border={borderSize}
+        color={color}
+      ></LogoGenerator>
     </>
   );
 }

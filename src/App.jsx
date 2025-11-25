@@ -8,8 +8,7 @@ function App() {
     <>
       <h1>Circle Profile Generator</h1>
       <ImageUploadCard setImageCropped={setImageCropped}></ImageUploadCard>
-      <ColorChooser></ColorChooser>
-      <LogoGenerator image={imageCropped}></LogoGenerator>
+      <ColorChooser imageCropped={imageCropped}></ColorChooser>
     </>
   );
 }
