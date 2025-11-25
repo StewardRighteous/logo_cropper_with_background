@@ -1,20 +1,7 @@
-@import "tailwindcss";
-
-@theme {
-    --color-primary: #135bec;
-    --color-background-light:#f6f6f8;
-    --color-background-dark: #101622
-    --font-display: "Inter", "sans-serif";
-}
-
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-}
-
 .circle{
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 500px;
+  height: 500px;
   background-color: #135bec;
   border: 2px solid ;
 }
