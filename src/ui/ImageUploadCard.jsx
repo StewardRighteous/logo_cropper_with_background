@@ -28,10 +28,7 @@ export default function ImageUploadCard({ setImageCropped }) {
       <>
         <div className="image-upload">
           <button onClick={() => setImage(null)}>Remove Image</button>
-          <div
-            className="crop-container"
-            style={{ height: "500px", width: "500px", position: "relative" }}
-          >
+          <div className="crop-container">
             <Cropper
               image={image}
               crop={crop}
@@ -43,9 +40,20 @@ export default function ImageUploadCard({ setImageCropped }) {
               cropShape="round"
             />
           </div>
-          <button onClick={handleCrop} style={{ marginTop: "20px" }}>
-            Crop & Save
-          </button>
+          <label htmlFor="zoom-level">
+            Zoom:
+            <input
+              type="range"
+              name="zoom-level"
+              id="zoom-level"
+              min={1}
+              max={3}
+              step={0.1}
+              value={zoom}
+              onChange={(e) => setZoom(Number(e.target.value))}
+            />
+          </label>
+          <button onClick={handleCrop}>Crop & Save</button>
         </div>
       </>
     );
@@ -54,11 +62,10 @@ export default function ImageUploadCard({ setImageCropped }) {
   return (
     <>
       <div className="image-upload">
-        <h1>Step 1: Upload your Image</h1>
+        <h1>Upload your Image</h1>
         <div className="upload-drop">
           <label htmlFor="image-upload">
-            <h3>Drag & Drop Image Here</h3>
-            <p>Or click the button below to browse your files</p>
+            Click the button below to browse your files
           </label>
           <input
             type="file"

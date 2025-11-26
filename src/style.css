@@ -62,6 +62,95 @@ h6 {
   isolation: isolate;
 }
 
+body {
+  font-family: sans-serif;
+  background-color: #eeeeee;
+}
+
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1rem;
+  gap: 8px;
+}
+
+.app header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.app .image-upload,
+.app .color-choose {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 4px;
+}
+
+.app .image-upload h1,
+.app .color-choose h1,
+.app .logo-generator h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.app .image-upload .upload-drop {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.app .image-upload .upload-drop input {
+  width: 212px;
+}
+
+.app .image-upload .crop-container {
+  position: relative;
+  height: 400px;
+}
+
+.app .image-upload label {
+  width: fit-content;
+  margin: auto;
+}
+
+.app .image-upload button {
+  background-color: #135bec;
+  color: white;
+  height: 40px;
+}
+
+.app .color-choose .border-options {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.app .color-choose .border-options .option {
+  display: flex;
+  gap: 8px;
+}
+
+.app .logo-generator {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.app .logo-generator .printable {
+  transform: scale(0.7) translateY(-180px);
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 24px;
+}
+
+.app .color-choose button,
+.app .logo-generator button {
+  width: 160px;
+  background-color: black;
+  color: white;
+  height: 32px;
+}
+
 .logo {
   position: relative;
   width: 500px;

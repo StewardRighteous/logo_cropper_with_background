@@ -29,10 +29,10 @@ export default function ColorChooser({ imageCropped }) {
   return (
     <>
       <div className="color-choose">
-        <h1>Step 2: Customize your Border</h1>
+        <h1>Customize your Border</h1>
         <div className="border-options">
           <div className="option">
-            <label htmlFor="border-color">Border Color</label>
+            <label htmlFor="border-color">Border Color: </label>
             <input
               type="color"
               name="border-color"

@@ -16,6 +16,7 @@ export default function LogoGenerator({ image, color }) {
   return (
     <>
       <div className="logo-generator">
+        <h1>Customize Logo</h1>
         <label htmlFor="border-size">
           Border:{" "}
           <input
@@ -40,6 +41,9 @@ export default function LogoGenerator({ image, color }) {
             max={20}
           />
         </label>
+        <button onClick={handlePrint} id="printbutton">
+          Print
+        </button>
         <div className="printable" ref={imagePrintable}>
           <div className="logo">
             <img
@@ -65,9 +69,6 @@ export default function LogoGenerator({ image, color }) {
             }}
           ></div>
         </div>
-        <button onClick={handlePrint} id="printbutton">
-          Print
-        </button>
       </div>
     </>
   );
