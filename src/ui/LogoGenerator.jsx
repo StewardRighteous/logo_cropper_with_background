@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import { useState } from "react";
 
 export default function LogoGenerator({ image, color }) {
+  const [imageSize, setImageSize] = useState(400);
+
   const imagePrintable = useRef();
 
   const handlePrint = useReactToPrint({
@@ -12,8 +15,25 @@ export default function LogoGenerator({ image, color }) {
   return (
     <>
       <div className="logo-generator">
+        <label htmlFor="border-size">
+          Border:{" "}
+          <input
+            type="range"
+            name="border-size"
+            id="border-size"
+            min={50}
+            max={500}
+            value={imageSize}
+            onChange={(e) => setImageSize(Number(e.target.value))}
+          />
+        </label>
         <div ref={imagePrintable} className="logo">
-          <img className="circle-front" src={image} alt="" />
+          <img
+            className="circle-front"
+            src={image}
+            alt=""
+            style={{ width: imageSize, height: imageSize }}
+          />
           <img className="circle-back" src={image} alt="" />
         </div>
         <div
