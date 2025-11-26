@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import LogoGenerator from "./LogoGenerator";
-import getCornerColor from "../utils/getCornerColor";
+import getDominantColor from "../utils/getDominantColor";
 
 export default function ColorChooser({ imageCropped }) {
   const [color, setColor] = useState("#ffffff");
@@ -10,7 +10,7 @@ export default function ColorChooser({ imageCropped }) {
     if (!imageCropped) return;
 
     async function loadCornerColor() {
-      const result = await getCornerColor(imageCropped);
+      const result = await getDominantColor(imageCropped);
       setColor(result.hex);
     }
 
