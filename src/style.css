@@ -62,83 +62,10 @@ h6 {
   isolation: isolate;
 }
 
-.app {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px 0.5fr 200px;
-  grid-template-areas:
-    "header header"
-    "image-upload logo"
-    "color-choose logo";
-  gap: 1rem;
-  padding: 1rem;
-  margin: auto;
-  max-width: 1280px;
-}
-
-:root {
-  --primary: #135bec;
-  --background-light: #f6f6f8;
-  --background-dark: #101622;
-}
-
-body {
-  font-family: sans-serif;
-  background-color: var(--background-light);
-}
-
-header {
-  grid-area: header;
-}
-
-.image-upload,
-.color-choose {
-  grid-area: image-upload;
-  background-color: white;
-  border: 2px solid dotted black;
-  border-radius: 1rem;
-  height: fit-content;
-  width: fit-content;
-  padding: 1rem;
-}
-
-.image-upload .upload-drop,
-.color-choose .border-options {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  text-align: center;
-  border: 2px solid black;
-  padding: 1rem;
-  width: fit-content;
-}
-
-.color-choose .border-options {
-  align-items: flex-start;
-  text-align: left;
-}
-
-.color-choose .border-options .option {
-  display: flex;
-  gap: 8px;
-}
-
-.color-choose .border-options .option input[type="number"] {
-  width: 40px;
-}
-
-.color-choose {
-  grid-area: color-choose;
-}
-
 .logo {
-  grid-area: logo;
-  padding: 1rem;
-  align-self: center;
-}
-
-.logo img {
-  margin-bottom: 1rem;
+  position: relative;
+  width: 500px;
+  height: 500px;
 }
 
 .circle {
@@ -146,20 +73,63 @@ header {
   width: 500px;
   height: 500px;
   background-color: #135bec;
-  border: 2px solid;
 }
 
-#printbutton {
-  width: 200px;
-  height: 44px;
-  margin-top: -20px;
-  background-color: var(--primary);
-  color: white;
+.circle-front {
+  border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@media screen and (width < 700px) {
-  .app {
-    display: flex;
-    flex-flow: column nowrap;
+.circle-back {
+  border-radius: 50%;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: #135bec;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+}
+
+@media print {
+  .logo {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 2rem auto;
+  }
+
+  .circle {
+    margin: 2rem auto;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    background-color: #135bec;
+  }
+
+  .circle-front {
+    border-radius: 50%;
+    width: 450px;
+    height: 450px;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .circle-back {
+    border-radius: 50%;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: #135bec;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
   }
 }
