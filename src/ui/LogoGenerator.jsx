@@ -27,21 +27,23 @@ export default function LogoGenerator({ image, color }) {
             onChange={(e) => setImageSize(Number(e.target.value))}
           />
         </label>
-        <div ref={imagePrintable} className="logo">
-          <img
-            className="circle-front"
-            src={image}
-            alt=""
-            style={{ width: imageSize, height: imageSize }}
-          />
-          <img className="circle-back" src={image} alt="" />
+        <div className="printable" ref={imagePrintable}>
+          <div className="logo">
+            <img
+              className="circle-front"
+              src={image}
+              alt=""
+              style={{ width: imageSize, height: imageSize }}
+            />
+            <img className="circle-back" src={image} alt="" />
+          </div>
+          <div
+            className="circle"
+            style={{
+              backgroundColor: color,
+            }}
+          ></div>
         </div>
-        <div
-          className="circle"
-          style={{
-            backgroundColor: color,
-          }}
-        ></div>
         <button onClick={handlePrint} id="printbutton">
           Print
         </button>
