@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function LogoGenerator({ image, color }) {
   const [imageSize, setImageSize] = useState(400);
+  const [blurLevel, setBlurLevel] = useState(5);
 
   const imagePrintable = useRef();
 
@@ -27,15 +28,35 @@ export default function LogoGenerator({ image, color }) {
             onChange={(e) => setImageSize(Number(e.target.value))}
           />
         </label>
+        <label htmlFor="blur-level">
+          Blur:{" "}
+          <input
+            type="range"
+            name="blur-level"
+            id="blur-level"
+            value={blurLevel}
+            onChange={(e) => setBlurLevel(Number(e.target.value))}
+            min={1}
+            max={20}
+          />
+        </label>
         <div className="printable" ref={imagePrintable}>
           <div className="logo">
             <img
               className="circle-front"
               src={image}
               alt=""
-              style={{ width: imageSize, height: imageSize }}
+              style={{
+                width: imageSize,
+                height: imageSize,
+              }}
             />
-            <img className="circle-back" src={image} alt="" />
+            <img
+              className="circle-back"
+              src={image}
+              alt=""
+              style={{ filter: `blur(${blurLevel}px)` }}
+            />
           </div>
           <div
             className="circle"
