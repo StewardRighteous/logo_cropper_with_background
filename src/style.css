@@ -64,7 +64,8 @@ h6 {
 
 body {
   font-family: sans-serif;
-  background-color: #eeeeee;
+  background-color: #121212;
+  color: white;
 }
 
 .app {
@@ -146,7 +147,7 @@ body {
 .app .color-choose button,
 .app .logo-generator button {
   width: 160px;
-  background-color: black;
+  background-color: #135bec;
   color: white;
   height: 32px;
 }
@@ -183,6 +184,18 @@ body {
   background-color: #135bec;
   filter: blur(5px);
   -webkit-filter: blur(5px);
+}
+
+@media only screen and (min-width: 992px) {
+  .app {
+    max-width: 1280px;
+    margin: 2rem auto;
+  }
+
+  .app .logo-generator .printable {
+    transform: none;
+    flex-flow: row nowrap;
+  }
 }
 
 @media print {
