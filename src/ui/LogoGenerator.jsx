@@ -11,17 +11,11 @@ export default function LogoGenerator({ image, border, color }) {
 
   return (
     <>
-      <div ref={imagePrintable} className="logo">
-        <img
-          className="circle"
-          src={image}
-          alt=""
-          style={{
-            backgroundColor: color,
-            borderColor: color,
-            borderWidth: border,
-          }}
-        />
+      <div className="logo-generator">
+        <div ref={imagePrintable} className="logo">
+          <img className="circle-front" src={image} alt="" />
+          <img className="circle-back" src={image} alt="" />
+        </div>
         <div
           className="circle"
           style={{
@@ -30,11 +24,10 @@ export default function LogoGenerator({ image, border, color }) {
             borderWidth: border,
           }}
         ></div>
+        <button onClick={handlePrint} id="printbutton">
+          Print
+        </button>
       </div>
-
-      <button onClick={handlePrint} id="printbutton">
-        Print
-      </button>
     </>
   );
 }
