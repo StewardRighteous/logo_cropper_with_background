@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 
-export default function LogoGenerator({ image, border, color }) {
+export default function LogoGenerator({ image, color }) {
   const imagePrintable = useRef();
 
   const handlePrint = useReactToPrint({
@@ -20,8 +20,6 @@ export default function LogoGenerator({ image, border, color }) {
           className="circle"
           style={{
             backgroundColor: color,
-            borderColor: color,
-            borderWidth: border,
           }}
         ></div>
         <button onClick={handlePrint} id="printbutton">
