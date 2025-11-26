@@ -4,7 +4,6 @@ export default function getDominantColor(imageSrc) {
     img.crossOrigin = "anonymous";
 
     img.onload = () => {
-      // Downscale for performance (40x40 = 1600 pixels)
       const canvas = document.createElement("canvas");
       const size = 40;
 
@@ -17,18 +16,21 @@ export default function getDominantColor(imageSrc) {
       const { data } = ctx.getImageData(0, 0, size, size);
 
       const colorCount = {};
-      let r, g, b;
+      let r, g, b, a;
 
       for (let i = 0; i < data.length; i += 4) {
         r = data[i];
         g = data[i + 1];
         b = data[i + 2];
+        a = data[i + 3];
+
+        // ❗ skip transparent pixels (common in circular-cropped images)
+        if (a === 0) continue;
 
         const key = `${r},${g},${b}`;
         colorCount[key] = (colorCount[key] || 0) + 1;
       }
 
-      // find most frequent color
       let dominant = null;
       let maxCount = 0;
 
@@ -37,6 +39,12 @@ export default function getDominantColor(imageSrc) {
           maxCount = colorCount[color];
           dominant = color;
         }
+      }
+
+      if (!dominant) {
+        // fallback: use center pixel
+        resolve({ r: 128, g: 128, b: 128, hex: "#808080" });
+        return;
       }
 
       const [dr, dg, db] = dominant.split(",").map(Number);
