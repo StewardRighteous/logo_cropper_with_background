@@ -1,22 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
-import getDominantColor from "../utils/getDominantColor";
 import downloadLogoPDF from "../utils/downloadLogoPDF";
 
 export default function LogoGenerator({ imageCropped, cropShape }) {
   const [blurLevel, setBlurLevel] = useState(5);
-  const [color, setColor] = useState("#ffffff");
-
-  useEffect(() => {
-    if (!imageCropped) return;
-
-    async function loadDominantColor() {
-      const result = await getDominantColor(imageCropped);
-      setColor(result.hex);
-    }
-
-    loadDominantColor();
-  }, [imageCropped]);
 
   const imagePrintable = useRef();
 
@@ -75,12 +62,7 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
               height: cropShape === "round" ? "10.842cm" : "105.833mm",
             }}
           >
-            <div
-              className="circle"
-              style={{
-                backgroundColor: color,
-              }}
-            ></div>
+            <div className="circle"></div>
             <img
               className="front"
               src={imageCropped}

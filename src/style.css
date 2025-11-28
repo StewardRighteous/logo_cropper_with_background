@@ -185,7 +185,7 @@ body {
   position: absolute;
   top: 4%;
   right: 4%;
-  background-color: blue;
+  background-color: black;
   z-index: 2;
 }
 
@@ -236,7 +236,7 @@ body {
     position: absolute;
     top: 4px;
     right: 4px;
-    background-color: blue;
+    background-color: black;
     z-index: 2;
   }
 }
@@ -276,7 +276,7 @@ body {
     position: absolute;
     top: 4px;
     right: 4px;
-    background-color: blue;
+    background-color: black;
     z-index: 2;
   }
 }
