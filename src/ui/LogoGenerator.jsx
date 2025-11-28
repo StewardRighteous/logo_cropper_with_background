@@ -10,7 +10,15 @@ export default function LogoGenerator({ image, color }) {
 
   const handlePrint = useReactToPrint({
     contentRef: imagePrintable,
-    documentTitle: "Logo",
+    documentTitle: "Print Copy",
+    pageStyle: `
+      @page{
+        size: 10.842cm 10.842cm;
+        margin: 0;
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+      }
+    `,
   });
 
   return (
