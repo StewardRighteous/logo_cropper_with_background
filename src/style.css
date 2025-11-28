@@ -64,8 +64,6 @@ h6 {
 
 body {
   font-family: sans-serif;
-  background-color: #121212;
-  color: white;
 }
 
 .app {
@@ -138,10 +136,11 @@ body {
 }
 
 .app .logo-generator .printable {
-  transform: scale(0.7) translateY(-180px);
+  transform: scale(0.7) translateY(-72px);
   display: flex;
   flex-flow: column nowrap;
   gap: 24px;
+  align-items: center;
 }
 
 .app .color-choose button,
@@ -154,42 +153,51 @@ body {
 
 .logo {
   position: relative;
-  width: 500px;
-  height: 500px;
-}
-
-.circle {
-  border-radius: 50%;
-  width: 500px;
-  height: 500px;
-  background-color: #135bec;
+  width: 10.842cm;
+  height: 10.842cm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1pt solid blue;
 }
 
 .circle-front {
   border-radius: 50%;
-  width: 450px;
-  height: 450px;
-  z-index: 1;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 10cm;
+  height: 10cm;
 }
 
 .circle-back {
   border-radius: 50%;
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 10.2cm;
+  height: 10.2cm;
   background-color: #135bec;
   filter: blur(5px);
   -webkit-filter: blur(5px);
+}
+
+.circle {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  background-color: #135bec;
+  z-index: 2;
 }
 
 @media only screen and (min-width: 992px) {
   .app {
     max-width: 1280px;
     margin: 2rem auto;
+  }
+
+  .app .logo-generator {
+    gap: 8px;
   }
 
   .app .logo-generator .printable {
@@ -200,38 +208,42 @@ body {
 
 @media print {
   .logo {
+    margin: 2rem;
     position: relative;
-    width: 500px;
-    height: 500px;
-    margin: 2rem auto;
-  }
-
-  .circle {
-    margin: 2rem auto;
-    border-radius: 50%;
-    width: 500px;
-    height: 500px;
-    background-color: #135bec;
+    width: 10.842cm;
+    height: 10.842cm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1pt solid blue;
   }
 
   .circle-front {
     border-radius: 50%;
-    width: 450px;
-    height: 450px;
-    z-index: 1;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 10cm;
+    height: 10cm;
   }
 
   .circle-back {
     border-radius: 50%;
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 10.2cm;
+    height: 10.2cm;
     background-color: #135bec;
     filter: blur(5px);
     -webkit-filter: blur(5px);
+  }
+
+  .circle {
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    background-color: #135bec;
+    z-index: 2;
   }
 }
