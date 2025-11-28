@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Cropper from "react-easy-crop";
-import getCroppedImg from "../utils/getCroppedImage";
+import {
+  getCroppedImgCircle,
+  getCroppedImgSquare,
+} from "../utils/getCroppedImage";
 
 export default function ImageUploadCard({ setImageCropped }) {
   const [image, setImage] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [cropShape, setCropShape] = useState("round");
 
   const onCropComplete = (croppedArea, croppedPixels) => {
     setCroppedAreaPixels(croppedPixels);
@@ -14,7 +18,13 @@ export default function ImageUploadCard({ setImageCropped }) {
 
   const handleCrop = async () => {
     try {
-      const croppedImageBlob = await getCroppedImg(image, croppedAreaPixels);
+      let croppedImageBlob;
+      if (cropShape == "round") {
+        croppedImageBlob = await getCroppedImgCircle(image, croppedAreaPixels);
+      } else {
+        croppedImageBlob = await getCroppedImgSquare(image, croppedAreaPixels);
+      }
+
       const croppedImageURL = URL.createObjectURL(croppedImageBlob);
 
       setImageCropped(croppedImageURL);
@@ -27,6 +37,18 @@ export default function ImageUploadCard({ setImageCropped }) {
     return (
       <>
         <div className="image-upload">
+          <label htmlFor="shape">
+            Choose Shape:{" "}
+            <select
+              name="shape"
+              id="shape"
+              value={cropShape}
+              onChange={(e) => setCropShape(e.target.value)}
+            >
+              <option value="round">Circle</option>
+              <option value="rect">Square</option>
+            </select>
+          </label>
           <button onClick={() => setImage(null)}>Remove Image</button>
           <div className="crop-container">
             <Cropper
@@ -37,7 +59,7 @@ export default function ImageUploadCard({ setImageCropped }) {
               onCropChange={setCrop}
               onCropComplete={onCropComplete}
               onZoomChange={setZoom}
-              cropShape="round"
+              cropShape={cropShape}
             />
           </div>
           <label htmlFor="zoom-level">
