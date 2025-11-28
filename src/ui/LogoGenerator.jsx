@@ -22,13 +22,21 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
   const handlePrint = useReactToPrint({
     contentRef: imagePrintable,
     documentTitle: "Print Copy",
-    pageStyle: `
+    pageStyle:
+      cropShape == "round"
+        ? `
       @page{
         size: 10.842cm 10.842cm;
         margin: 0;
         -webkit-print-color-adjust: exact; 
         print-color-adjust: exact;
-      }
+      } `
+        : `@page{
+        size: 105.833mm 105.833mm;
+        margin: 0;
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+      } ;
     `,
   });
 
@@ -52,7 +60,13 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
           Print
         </button>
         <div className="printable" ref={imagePrintable}>
-          <div className="logo">
+          <div
+            className="logo"
+            style={{
+              width: cropShape == "round" ? "10.842cm" : "105.833mm",
+              height: cropShape == "round" ? "10.842cm" : "105.833mm",
+            }}
+          >
             <div
               className="circle"
               style={{
@@ -64,9 +78,9 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
               src={imageCropped}
               alt=""
               style={{
-                borderRadius: cropShape == "round" ? "283px" : "35px",
-                height: cropShape == "round" ? "10cm" : "9.03cm",
-                width: cropShape == "round" ? "10cm" : "9.03cm",
+                borderRadius: cropShape == "round" ? "283px" : "6.194mm",
+                height: cropShape == "round" ? "10cm" : "90mm",
+                width: cropShape == "round" ? "10cm" : "90mm",
               }}
             />
             <img
@@ -75,10 +89,11 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
               alt=""
               style={{
                 filter: `blur(${blurLevel}px)`,
-                borderRadius: cropShape == "round" ? "307px" : "42px",
+                borderRadius: cropShape == "round" ? "307px" : "6.194mm",
                 height:
-                  cropShape == "round" ? "calc(10.842cm - 1pt)" : "9.84cm",
-                width: cropShape == "round" ? "calc(10.842cm - 1pt)" : "9.84cm",
+                  cropShape == "round" ? "calc(10.842cm - 1pt)" : "98.42mm",
+                width:
+                  cropShape == "round" ? "calc(10.842cm - 1pt)" : "98.42mm",
               }}
             />
           </div>
