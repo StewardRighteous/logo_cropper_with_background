@@ -3,7 +3,7 @@ import { useReactToPrint } from "react-to-print";
 import { useState } from "react";
 
 export default function LogoGenerator({ image, color }) {
-  const [imageSize, setImageSize] = useState(400);
+  const [imageSize, setImageSize] = useState(10.2);
   const [blurLevel, setBlurLevel] = useState(5);
 
   const imagePrintable = useRef();
@@ -18,19 +18,20 @@ export default function LogoGenerator({ image, color }) {
       <div className="logo-generator">
         <h1>Customize Logo</h1>
         <label htmlFor="border-size">
-          Border:{" "}
+          Border:
           <input
             type="range"
             name="border-size"
             id="border-size"
-            min={50}
-            max={500}
+            min={10.001}
+            max={10.842}
+            step={0.001}
             value={imageSize}
             onChange={(e) => setImageSize(Number(e.target.value))}
           />
         </label>
         <label htmlFor="blur-level">
-          Blur:{" "}
+          Blur:
           <input
             type="range"
             name="blur-level"
@@ -46,28 +47,24 @@ export default function LogoGenerator({ image, color }) {
         </button>
         <div className="printable" ref={imagePrintable}>
           <div className="logo">
-            <img
-              className="circle-front"
-              src={image}
-              alt=""
+            <div
+              className="circle"
               style={{
-                width: imageSize,
-                height: imageSize,
+                backgroundColor: color,
               }}
-            />
+            ></div>
+            <img className="circle-front" src={image} alt="" />
             <img
               className="circle-back"
               src={image}
               alt=""
-              style={{ filter: `blur(${blurLevel}px)` }}
+              style={{
+                filter: `blur(${blurLevel}px)`,
+                width: `${imageSize}cm`,
+                height: `${imageSize}cm`,
+              }}
             />
           </div>
-          <div
-            className="circle"
-            style={{
-              backgroundColor: color,
-            }}
-          ></div>
         </div>
       </div>
     </>
