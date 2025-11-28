@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import getDominantColor from "../utils/getDominantColor";
+import downloadLogoPDF from "../utils/downloadLogoPDF";
 
 export default function LogoGenerator({ imageCropped, cropShape }) {
   const [blurLevel, setBlurLevel] = useState(5);
@@ -18,6 +19,10 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
   }, [imageCropped]);
 
   const imagePrintable = useRef();
+
+  const handleDownload = () => {
+    downloadLogoPDF(imagePrintable.current, cropShape, imageCropped, blurLevel);
+  };
 
   const handlePrint = useReactToPrint({
     contentRef: imagePrintable,
@@ -59,12 +64,15 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
         <button onClick={handlePrint} id="printbutton">
           Print
         </button>
+        <button onClick={handleDownload} id="downloadbutton">
+          Download
+        </button>
         <div className="printable" ref={imagePrintable}>
           <div
             className="logo"
             style={{
-              width: cropShape == "round" ? "10.842cm" : "105.833mm",
-              height: cropShape == "round" ? "10.842cm" : "105.833mm",
+              width: cropShape === "round" ? "10.842cm" : "105.833mm",
+              height: cropShape === "round" ? "10.842cm" : "105.833mm",
             }}
           >
             <div
