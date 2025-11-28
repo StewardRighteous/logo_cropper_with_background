@@ -5,12 +5,15 @@ import {
   getCroppedImgSquare,
 } from "../utils/getCroppedImage";
 
-export default function ImageUploadCard({ setImageCropped }) {
+export default function ImageUploadCard({
+  setImageCropped,
+  cropShape,
+  setCropShape,
+}) {
   const [image, setImage] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const [cropShape, setCropShape] = useState("round");
 
   const onCropComplete = (croppedArea, croppedPixels) => {
     setCroppedAreaPixels(croppedPixels);
