@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import getDominantColor from "../utils/getDominantColor";
 
-export default function LogoGenerator({ imageCropped }) {
+export default function LogoGenerator({ imageCropped, cropShape }) {
   const [imageSize, setImageSize] = useState(10.2);
   const [blurLevel, setBlurLevel] = useState(5);
   const [color, setColor] = useState("#ffffff");
@@ -73,7 +73,12 @@ export default function LogoGenerator({ imageCropped }) {
                 backgroundColor: color,
               }}
             ></div>
-            <img className="front" src={imageCropped} alt="" />
+            <img
+              className="front"
+              src={imageCropped}
+              alt=""
+              style={{ borderRadius: cropShape == "round" ? "50%" : "12%" }}
+            />
             <img
               className="back"
               src={imageCropped}
@@ -82,6 +87,7 @@ export default function LogoGenerator({ imageCropped }) {
                 filter: `blur(${blurLevel}px)`,
                 width: `${imageSize}cm`,
                 height: `${imageSize}cm`,
+                borderRadius: cropShape == "round" ? "50%" : "12%",
               }}
             />
           </div>

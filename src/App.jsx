@@ -16,7 +16,7 @@ function App() {
           cropShape={cropShape}
           setCropShape={setCropShape}
         ></ImageUploadCard>
-        <LogoGenerator imageCropped={imageCropped} />
+        <LogoGenerator imageCropped={imageCropped} cropShape={cropShape} />
       </div>
     </>
   );
