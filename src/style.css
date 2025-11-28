@@ -161,14 +161,14 @@ body {
   border: 1pt solid blue;
 }
 
-.circle-front {
+.front {
   position: absolute;
   z-index: 1;
   width: 10cm;
   height: 10cm;
 }
 
-.circle-back {
+.back {
   position: absolute;
   width: 10.2cm;
   height: 10.2cm;
@@ -216,14 +216,14 @@ body {
     border: 1pt solid blue;
   }
 
-  .circle-front {
+  .front {
     position: absolute;
     z-index: 1;
     width: 10cm;
     height: 10cm;
   }
 
-  .circle-back {
+  .back {
     position: absolute;
     width: 10.2cm;
     height: 10.2cm;

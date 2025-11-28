@@ -73,9 +73,9 @@ export default function LogoGenerator({ imageCropped }) {
                 backgroundColor: color,
               }}
             ></div>
-            <img className="circle-front" src={imageCropped} alt="" />
+            <img className="front" src={imageCropped} alt="" />
             <img
-              className="circle-back"
+              className="back"
               src={imageCropped}
               alt=""
               style={{
