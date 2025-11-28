@@ -1,10 +1,22 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
-import { useState } from "react";
+import getDominantColor from "../utils/getDominantColor";
 
-export default function LogoGenerator({ image, color }) {
+export default function LogoGenerator({ imageCropped }) {
   const [imageSize, setImageSize] = useState(10.2);
   const [blurLevel, setBlurLevel] = useState(5);
+  const [color, setColor] = useState("#ffffff");
+
+  useEffect(() => {
+    if (!imageCropped) return;
+
+    async function loadDominantColor() {
+      const result = await getDominantColor(imageCropped);
+      setColor(result.hex);
+    }
+
+    loadDominantColor();
+  }, [imageCropped]);
 
   const imagePrintable = useRef();
 
@@ -61,10 +73,10 @@ export default function LogoGenerator({ image, color }) {
                 backgroundColor: color,
               }}
             ></div>
-            <img className="circle-front" src={image} alt="" />
+            <img className="circle-front" src={imageCropped} alt="" />
             <img
               className="circle-back"
-              src={image}
+              src={imageCropped}
               alt=""
               style={{
                 filter: `blur(${blurLevel}px)`,

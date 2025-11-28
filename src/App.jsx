@@ -1,4 +1,4 @@
-import { ImageUploadCard, ColorChooser, LogoGenerator } from "./ui/barrel";
+import { ImageUploadCard, LogoGenerator } from "./ui/barrel";
 import { useState } from "react";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
           <h1>Circle Profile Generator</h1>
         </header>
         <ImageUploadCard setImageCropped={setImageCropped}></ImageUploadCard>
-        <ColorChooser imageCropped={imageCropped}></ColorChooser>
+        <LogoGenerator imageCropped={imageCropped} />
       </div>
     </>
   );
