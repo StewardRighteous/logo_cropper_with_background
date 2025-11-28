@@ -3,7 +3,6 @@ import { useReactToPrint } from "react-to-print";
 import getDominantColor from "../utils/getDominantColor";
 
 export default function LogoGenerator({ imageCropped, cropShape }) {
-  const [imageSize, setImageSize] = useState(10.2);
   const [blurLevel, setBlurLevel] = useState(5);
   const [color, setColor] = useState("#ffffff");
 
@@ -37,19 +36,6 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
     <>
       <div className="logo-generator">
         <h1>Customize Logo</h1>
-        <label htmlFor="border-size">
-          Border:
-          <input
-            type="range"
-            name="border-size"
-            id="border-size"
-            min={10.001}
-            max={10.842}
-            step={0.001}
-            value={imageSize}
-            onChange={(e) => setImageSize(Number(e.target.value))}
-          />
-        </label>
         <label htmlFor="blur-level">
           Blur:
           <input
@@ -77,7 +63,11 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
               className="front"
               src={imageCropped}
               alt=""
-              style={{ borderRadius: cropShape == "round" ? "50%" : "12%" }}
+              style={{
+                borderRadius: cropShape == "round" ? "283px" : "35px",
+                height: cropShape == "round" ? "10cm" : "9.03cm",
+                width: cropShape == "round" ? "10cm" : "9.03cm",
+              }}
             />
             <img
               className="back"
@@ -85,9 +75,10 @@ export default function LogoGenerator({ imageCropped, cropShape }) {
               alt=""
               style={{
                 filter: `blur(${blurLevel}px)`,
-                width: `${imageSize}cm`,
-                height: `${imageSize}cm`,
-                borderRadius: cropShape == "round" ? "50%" : "12%",
+                borderRadius: cropShape == "round" ? "307px" : "42px",
+                height:
+                  cropShape == "round" ? "calc(10.842cm - 1pt)" : "9.84cm",
+                width: cropShape == "round" ? "calc(10.842cm - 1pt)" : "9.84cm",
               }}
             />
           </div>
